@@ -68,10 +68,10 @@ spec:
              - SETUID
              - SETGID
         env:
-          - name: PROXY_SERVICE_HOST_1
+          - name: PROXY_SERVICE_HOST
             value: '127.0.0.1'
-          - name: PROXY_SERVICE_PORT_1
-            value: '8093'
+          - name: PROXY_SERVICE_PORT
+            value: '8080'
           - name: LOCATIONS_CSV
             value: '/, /api/'
           - name: NAXSI_USE_DEFAULT_RULES
