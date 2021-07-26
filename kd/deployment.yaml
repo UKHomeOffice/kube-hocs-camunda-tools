@@ -22,7 +22,7 @@ spec:
     metadata:
       labels:
         name: hocs-camunda-tools
-        role: hocs-backend
+        role: hocs-camunda-tools
         version: "1"
     spec:
       containers:
