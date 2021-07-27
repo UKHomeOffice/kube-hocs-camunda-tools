@@ -4,12 +4,12 @@ kind: Deployment
 metadata:
   name: hocs-camunda-tools
   labels:
-    version: "1"
+    version: {{.VERSION}}
   annotations:
-    #downscaler/uptime: {{.UPTIME_PERIOD}}
-    downscaler/uptime: "Mon-Fri 08:00-18:00 Europe/London"
+    downscaler/uptime: {{.UPTIME_PERIOD}}
+    #downscaler/uptime: "Mon-Fri 08:00-18:00 Europe/London"
 spec:
-  replicas: 1
+  replicas: {{.MIN_REPLICAS}}
   selector:
     matchLabels:
       name: hocs-camunda-tools
@@ -23,7 +23,7 @@ spec:
       labels:
         name: hocs-camunda-tools
         role: hocs-camunda-tools
-        version: "1"
+        version: {{.VERSION}}
     spec:
       containers:
       - name: certs
@@ -127,17 +127,17 @@ spec:
           - name: DB_HOST
             valueFrom:
               secretKeyRef:
-                name: hocs-delta-rds
+                name: {{.KUBE_NAMESPACE}}-rds
                 key: endpoint
           - name: DB_PORT
             valueFrom:
               secretKeyRef:
-                name: hocs-delta-rds
+                name: {{.KUBE_NAMESPACE}}-rds
                 key: port
           - name: DB_NAME
             valueFrom:
               secretKeyRef:
-                name: hocs-delta-rds
+                name: {{.KUBE_NAMESPACE}}-rds
                 key: db_name
           - name: DB_SCHEMA_NAME
             valueFrom:
@@ -213,7 +213,7 @@ spec:
         args:
           - --config=/etc/secrets/data.yml
           - --discovery-url=https://sso-dev.notprod.homeoffice.gov.uk/auth/realms/hocs-notprod
-          - --openid-provider-proxy=http://hocs-outbound-proxy.hocs-delta.svc.cluster.local:31290
+          - --openid-provider-proxy=http://hocs-outbound-proxy.{{.KUBE_NAMESPACE}}.svc.cluster.local:31290
           - --listen=127.0.0.1:8081
           - --enable-logging=true
           - --enable-json-logging=true
