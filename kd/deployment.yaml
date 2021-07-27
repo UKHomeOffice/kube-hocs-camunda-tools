@@ -59,7 +59,7 @@ spec:
             cpu: 300m
 
       - name: proxy
-        image: quay.io/ukhomeofficedigital/nginx-proxy-govuk:v3.4.12
+        image: quay.io/ukhomeofficedigital/nginx-proxy-govuk:v4
         imagePullPolicy: Always
         securityContext:
           runAsNonRoot: true
@@ -79,7 +79,7 @@ spec:
           - name: ENABLE_UUID_PARAM
             value: 'FALSE'
           - name: HTTPS_REDIRECT
-            value: 'FALSE'
+            value: 'TRUE'
           - name: SERVER_CERT
             value: /certs/tls.pem
           - name: SERVER_KEY
@@ -88,8 +88,10 @@ spec:
             value: '501 502 503 504'
           - name: ADD_NGINX_HTTP_CFG
             value: 'fastcgi_buffers 16 64k; fastcgi_buffer_size 128k; proxy_buffer_size 128k; proxy_buffers 4 64k; proxy_busy_buffers_size 128k; client_header_buffer_size 8k; large_client_header_buffers 4 128k;'
+          - name: ADD_NGINX_SERVER_CFG  
+            value: 'rewrite /app/welcome/$ https://$host/app/welcome/default/#/login? permanent;'
           - name: CLIENT_MAX_BODY_SIZE
-            value: '52'
+            value: '52'  
         volumeMounts:
           - name: certs
             mountPath: /certs
