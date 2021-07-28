@@ -36,7 +36,7 @@ spec:
              - SETGID
         args:
           - --certs=/certs
-          - --domain=hocs-camunda-tools.hocs-delta.svc.cluster.local
+          - --domain=hocs-camunda-tools.{{.KUBE_NAMESPACE}}.svc.cluster.local
           - --expiry=8760h
           - --command=/usr/local/scripts/trigger_nginx_reload.sh
         env:
@@ -233,7 +233,7 @@ spec:
           - --enable-logout-redirect=true
           - --enable-refresh-tokens=true
           - --encryption-key=$(ENCRYPTION_KEY)
-          - --redirection-url=https://hocs-delta-camunda.internal.cs-notprod.homeoffice.gov.uk/
+          - --redirection-url=https://{{.INTERNAL_DOMAIN}}/
         ports:
           - name: keycloak-http
             containerPort: 8081
