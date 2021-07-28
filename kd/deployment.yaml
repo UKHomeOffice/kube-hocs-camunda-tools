@@ -108,7 +108,7 @@ spec:
             cpu: 100m
 
       - name: hocs-camunda-tools
-        image: quay.io/ukhomeofficedigital/hocs-camunda-tools:0.0.3
+        image: quay.io/ukhomeofficedigital/hocs-camunda-tools:0.0.4
         imagePullPolicy: Always
         securityContext:
           runAsNonRoot: true
@@ -233,7 +233,6 @@ spec:
           - --enable-logout-redirect=true
           - --enable-refresh-tokens=true
           - --encryption-key=$(ENCRYPTION_KEY)
-          - --redirection-url=https://{{.INTERNAL_DOMAIN}}/
         ports:
           - name: keycloak-http
             containerPort: 8081
