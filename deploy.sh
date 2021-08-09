@@ -8,8 +8,6 @@ export VERSION=${VERSION}
 
 export DOMAIN="cs"
 
-export MIN_REPLICAS="1"
-export MAX_REPLICAS="1"
 export KUBE_SERVER=https://kube-api-notprod.notprod.acp.homeoffice.gov.uk
 export KC_REALM=https://sso-dev.notprod.homeoffice.gov.uk/auth/realms/hocs-notprod
 export UPTIME_PERIOD="Mon-Fri 08:00-18:00 Europe/London"

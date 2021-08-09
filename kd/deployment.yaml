@@ -8,7 +8,7 @@ metadata:
   annotations:
     downscaler/uptime: {{.UPTIME_PERIOD}}
 spec:
-  replicas: {{.MIN_REPLICAS}}
+  replicas: 1
   selector:
     matchLabels:
       name: hocs-camunda-tools
@@ -94,10 +94,10 @@ spec:
               proxy_busy_buffers_size 128k;
               client_header_buffer_size 8k;
               large_client_header_buffers 4 128k;
-          - name: ADD_NGINX_SERVER_CFG  
+          - name: ADD_NGINX_SERVER_CFG
             value: 'rewrite /app/welcome/$ https://$host/app/welcome/default/#/login? permanent;'
           - name: CLIENT_MAX_BODY_SIZE
-            value: '52'  
+            value: '52'
         volumeMounts:
           - name: certs
             mountPath: /certs
@@ -123,8 +123,6 @@ spec:
              - SETUID
              - SETGID
         env:
-          - name: DB_HOST
-            value: 'postgres'
           - name: HOCS_BASICAUTH
             valueFrom:
               secretKeyRef:
@@ -197,7 +195,7 @@ spec:
           - mountPath: /etc/ssl/certs
             name: bundle
             readOnly: true
-      
+
       - name: keycloak-proxy
         image: quay.io/keycloak/keycloak-gatekeeper:8.0.2
         imagePullPolicy: Always
@@ -246,7 +244,7 @@ spec:
           - mountPath: /etc/secrets
             name: frontend-keycloak-secret
             readOnly: true
-      
+
       volumes:
         - name: certs
           emptyDir:
