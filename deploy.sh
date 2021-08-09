@@ -1,11 +1,10 @@
 #!/bin/bash
 set -euo pipefail
 
-# export KUBE_NAMESPACE=${ENVIRONMENT:-$DRONE_DEPLOY_TO}
-export KUBE_NAMESPACE="hocs-delta"
-# export KUBE_TOKEN=${KUBE_TOKEN}
-#export VERSION=${VERSION}
-export VERSION="\"1\""
+export KUBE_NAMESPACE=${ENVIRONMENT:-$DRONE_DEPLOY_TO}
+export KUBE_TOKEN=${KUBE_TOKEN}
+export VERSION=${VERSION}
+
 
 export DOMAIN="cs"
 
