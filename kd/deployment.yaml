@@ -230,7 +230,7 @@ spec:
           - --no-redirects=false
           - --resources=uri=/health|white-listed=true
           - --resources=uri=/public/*|white-listed=true
-          - --resources=uri=/*
+          - --resources=uri=/*|roles=CAMUNDA_TOOLS_USER
           - --secure-cookie=true
           - --http-only-cookie=true
           - --revocation-url=https://sso-dev.notprod.homeoffice.gov.uk/auth/realms/hocs-notprod/protocol/openid-connect/logout
