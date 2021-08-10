@@ -13,7 +13,7 @@ export KC_REALM=https://sso-dev.notprod.homeoffice.gov.uk/auth/realms/hocs-notpr
 export UPTIME_PERIOD="Mon-Fri 08:00-18:00 Europe/London"
 export KUBE_CERTIFICATE_AUTHORITY="https://raw.githubusercontent.com/UKHomeOffice/acp-ca/master/acp-notprod.crt"
 
-export INTERNAL_DOMAIN="${KUBE_NAMESPACE}-camunda.internal.${DOMAIN}-notprod.homeoffice.gov.uk"
+export INTERNAL_DOMAIN="camunda.${KUBE_NAMESPACE}.internal.${DOMAIN}-notprod.homeoffice.gov.uk"
 
 echo
 echo "Deploying hocs-camunda-tools ${VERSION} to ${KUBE_NAMESPACE}"
