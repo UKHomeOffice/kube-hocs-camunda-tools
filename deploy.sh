@@ -24,7 +24,8 @@ echo
 cd kd || exit 1
 
 kd --timeout 10m \
+    -f hocs-camunda-tools-networkpolicy.yaml \
     -f ingress-internal.yaml \
     -f deployment.yaml \
-    -f service.yaml \
-    -f hocs-camunda-tools-networkpolicy.yaml
+    -f service.yaml
+
