@@ -26,4 +26,5 @@ cd kd || exit 1
 kd --timeout 10m \
     -f ingress-internal.yaml \
     -f deployment.yaml \
-    -f service.yaml
+    -f service.yaml \
+    -f hocs-camunda-tools-networkpolicy.yaml
