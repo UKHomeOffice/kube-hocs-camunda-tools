@@ -16,7 +16,7 @@ export UPTIME_PERIOD="Mon-Fri 08:00-18:00 Europe/London"
 export KUBE_CERTIFICATE_AUTHORITY="https://raw.githubusercontent.com/UKHomeOffice/acp-ca/master/acp-notprod.crt"
 
 export SUBNAMESPACE="${KUBE_NAMESPACE#*-}" # e.g. dev, qa
-export INTERNAL_DOMAIN="camunda.${SUBNAMESPACE}.internal.${DOMAIN}-notprod.homeoffice.gov.uk"
+export INTERNAL_DOMAIN="camunda-${SUBNAMESPACE}.internal.${DOMAIN}-notprod.homeoffice.gov.uk"
 
 echo
 echo "Deploying hocs-camunda-tools ${VERSION} to ${KUBE_NAMESPACE}"
