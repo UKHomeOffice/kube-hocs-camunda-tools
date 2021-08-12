@@ -21,7 +21,7 @@ spec:
     metadata:
       labels:
         name: hocs-camunda-tools
-        role: hocs-camunda-tools
+        role: hocs-frontend
         version: {{.VERSION}}
     spec:
       containers:
