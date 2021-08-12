@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: hocs-camunda-tools-policy
+spec:
+  egress:
+    - ports:
+        - port: 5432
+          protocol: TCP
+      to:
+        - ipBlock:
+            cidr: 10.250.24.0/21
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              name: ingress-internal
+  podSelector:
+    matchLabels:
+      name: hocs-camunda-tools
+  policyTypes:
+    - Ingress
+    - Egress
